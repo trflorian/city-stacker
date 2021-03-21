@@ -58,6 +58,17 @@ namespace Crane
             craneJoint.connectedBody = null;
         }
 
+        private void DestroyHouse()
+        {
+            if (_currentHouse.isDetached) return;
+            
+            craneLine.gameObject.SetActive(false);
+            
+            Destroy(_currentHouse.gameObject);
+            craneJoint.connectedBody = null;
+            _currentHouse = null;
+        }
+
         private void MoveUp()
         {
             if (_isGameOver) return;
@@ -100,7 +111,7 @@ namespace Crane
         {
             _isGameOver = true;
 
-            ReleaseHouse();
+            DestroyHouse();
         }
 
         private void UpdateCraneLine()
