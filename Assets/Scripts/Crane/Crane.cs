@@ -30,7 +30,7 @@ namespace Crane
 
         private void Update()
         {
-            if (!_currentHouse.isDetached)
+            if (_currentHouse != null && !_currentHouse.isDetached)
             {
                 UpdateCraneLine();
             }
@@ -50,7 +50,7 @@ namespace Crane
 
         private void ReleaseHouse()
         {
-            if (_currentHouse.isDetached) return;
+            if (_currentHouse == null || _currentHouse.isDetached) return;
             
             craneLine.gameObject.SetActive(false);
             
