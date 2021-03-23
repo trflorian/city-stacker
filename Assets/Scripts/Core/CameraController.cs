@@ -12,6 +12,7 @@ namespace Core
         private const float CraneCameraOffset = 2;
         private const float GameOverZoomTime = 2;
         
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private GameObject crane;
 
         private Camera _camera;
@@ -24,12 +25,12 @@ namespace Core
             
             _isGameOver = false;
             
-            GameManager.OnGameOver += OnGameOver;
+            gameManager.OnGameOver += OnGameOver;
         }
 
         private void OnDestroy()
         {
-            GameManager.OnGameOver -= OnGameOver;
+            gameManager.OnGameOver -= OnGameOver;
         }
 
         private void Update()

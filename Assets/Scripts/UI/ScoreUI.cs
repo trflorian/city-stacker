@@ -10,6 +10,8 @@ namespace UI
     /// </summary>
     public class ScoreUI : MonoBehaviour
     {
+        [SerializeField] private GameManager gameManager;
+        
         private TMP_Text _scoreText;
 
         private void Awake()
@@ -19,7 +21,7 @@ namespace UI
 
         private void Update()
         {
-            _scoreText.SetText($"Score: {GameManager.Score}");
+            _scoreText.SetText($"Score: {gameManager.score}");
         }
     }
 }

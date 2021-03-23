@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3480d410a599f43a4aed4ba81e0b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
 --- !u!4 &532321225
 Transform:
   m_ObjectHideFlags: 0
@@ -604,6 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2ba1ee1c8ee5448acb43d08553819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 532321224}
 --- !u!1 &1086638996
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f7bb9692229dc4081a63aeff06b129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 532321224}
 --- !u!1 &1602473465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35a333ec2490c443bcd8c380e1738bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 532321224}
   crane: {fileID: 2549697830899676852}
 --- !u!20 &1687258584
 Camera:
@@ -1602,6 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ae6d5d45591c543b832e900fecb891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 532321224}
   housePrefab: {fileID: 2123423627017562185, guid: adc964c4d453e494fbe3d59eac05e68f, type: 3}
   craneJoint: {fileID: 2549697831519437023}
   craneLine: {fileID: 1806021808}

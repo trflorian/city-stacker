@@ -9,19 +9,18 @@ namespace Core
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-        public static event UnityAction OnTouchTap;
-        public static event UnityAction OnGameOver;
+        public event UnityAction OnTouchTap;
+        public event UnityAction OnGameOver;
 
-        public static int Score;
+        public int score;
+        
+        private bool _isGameOver;
     
         private TouchControls _controls;
 
-        private static bool _isGameOver;
-
         private void Awake()
         {
-            Score = 0;
-            _isGameOver = false;
+            Reset();
             
             _controls = new TouchControls();
 
@@ -40,7 +39,7 @@ namespace Core
             OnTouchTap?.Invoke();
         }
 
-        public static void CallGameOver()
+        public void CallGameOver()
         {
             // dont call game over event a second time
             if (_isGameOver) return;
@@ -48,6 +47,22 @@ namespace Core
             _isGameOver = true;
             
             OnGameOver?.Invoke();
+        }
+
+        public void Reset()
+        {
+            score = 0;
+            _isGameOver = false;
+
+            for (int i = transform.childCount-1; i >= 0; i--)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+
+        public void Tap()
+        {
+            OnTouchTap?.Invoke();
         }
     }
 }

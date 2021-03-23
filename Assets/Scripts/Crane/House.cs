@@ -10,14 +10,17 @@ namespace Crane
     /// </summary>
     public class House : MonoBehaviour
     {
+        public const float GravityScale = 1.8f;
+
         public const int BuildingHeight = 20;
 
         public event UnityAction OnTouchDown;
-
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Sprite houseBase, houseBody, houseRoof;
 
         private Rigidbody2D _rigidbody;
+
+        private GameManager _gameManager;
 
         private int _level;
 
@@ -28,11 +31,14 @@ namespace Crane
             isDetached = false;
 
             _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody.gravityScale = GravityScale;
         }
 
-        public void SetLevel(int floorLevel)
+        public void Setup(GameManager gameManager, int floorLevel, Vector2 initialVelocity)
         {
+            _gameManager = gameManager;
             _level = floorLevel;
+            _rigidbody.velocity = initialVelocity;
             
             var sprite = floorLevel switch
             {
@@ -46,7 +52,7 @@ namespace Crane
 
         public void Detach()
         {
-            transform.SetParent(null);
+            transform.SetParent(_gameManager.transform);
             isDetached = true;
 
             _rigidbody.drag = 1f;
@@ -63,7 +69,7 @@ namespace Crane
 
             if (_level > 0 && touchGround)
             {
-                GameManager.CallGameOver();
+                _gameManager.CallGameOver();
             }
         }
 
@@ -71,8 +77,13 @@ namespace Crane
         {
             if (other.transform.CompareTag("Border"))
             {
-                GameManager.CallGameOver();
+                _gameManager.CallGameOver();
             }
+        }
+
+        public float GetVelocityX()
+        {
+            return _rigidbody.velocity.x;
         }
     }
 }

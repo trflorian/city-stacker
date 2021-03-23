@@ -8,15 +8,17 @@ namespace UI
     /// </summary>
     public class GameOverPanel : MonoBehaviour
     {
+        [SerializeField] private GameManager gameManager;
+        
         private void Awake()
         {
-            GameManager.OnGameOver += ShowGameOverPanel;
+            gameManager.OnGameOver += ShowGameOverPanel;
             gameObject.SetActive(false);
         }
 
         private void OnDestroy()
         {
-            GameManager.OnGameOver -= ShowGameOverPanel;
+            gameManager.OnGameOver -= ShowGameOverPanel;
         }
 
         private void ShowGameOverPanel()
