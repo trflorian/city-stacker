@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using Core;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,13 +10,19 @@ namespace Crane
     /// </summary>
     public class House : MonoBehaviour
     {
+        public const int MaxColors = 5;
         public const float GravityScale = 1.8f;
-
         public const int BuildingHeight = 20;
 
         public event UnityAction OnTouchDown;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private Sprite houseBase, houseBody, houseRoof;
+        
+        [SerializeField] private List<SpriteRenderer> spriteRenderers;
+
+        [SerializeField] private List<Color> facadeColors;
+        
+        [SerializeField] private Sprite houseBase, houseBody, houseTop;
+        [SerializeField] private Sprite houseWindowsBase, houseWindowsBody, houseWindowsTop;
+        [SerializeField] private Sprite houseDoor, houseRoof;
 
         private Rigidbody2D _rigidbody;
 
@@ -40,18 +46,37 @@ namespace Crane
             _level = floorLevel;
             _rigidbody.velocity = initialVelocity;
             
-            var sprite = floorLevel switch
+            var facadeSprite = floorLevel switch
             {
                 0 => houseBase,
-                BuildingHeight => houseRoof,
+                BuildingHeight => houseTop,
                 _ => houseBody
             };
+            var windowsSprite = floorLevel switch
+            {
+                0 => houseWindowsBase,
+                BuildingHeight => houseWindowsTop,
+                _ => houseWindowsBody
+            };
+            var additionalSprite = floorLevel switch
+            {
+                0 => houseDoor,
+                BuildingHeight => houseRoof,
+                _ => null
+            };
 
-            spriteRenderer.sprite = sprite;
+            spriteRenderers[0].sprite = facadeSprite;
+            spriteRenderers[1].sprite = windowsSprite;
+            spriteRenderers[2].sprite = additionalSprite;
 
+            spriteRenderers[0].color = facadeColors[_gameManager.houseColorId];
+            
             if (floorLevel > 0 && floorLevel < BuildingHeight)
             {
-                spriteRenderer.flipY = floorLevel % 2 == 0;
+                foreach (var spriteRenderer in spriteRenderers)
+                {
+                    spriteRenderer.flipY = floorLevel % 2 == 0;
+                }
             }
         }
 

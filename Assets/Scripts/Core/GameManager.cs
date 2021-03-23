@@ -1,3 +1,4 @@
+using Crane;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -22,6 +23,7 @@ namespace Core
         private bool _isGameOver;
     
         private TouchControls _controls;
+        public int houseColorId;
 
         private void Awake()
         {
@@ -64,6 +66,8 @@ namespace Core
 
         public void Reset()
         {
+            houseColorId = Random.Range(0, House.MaxColors);
+            
             Score = 0;
             _isGameOver = false;
 
