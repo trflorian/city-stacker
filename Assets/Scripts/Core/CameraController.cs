@@ -10,7 +10,7 @@ namespace Core
     public class CameraController : MonoBehaviour
     {
         private const float CraneCameraOffset = 1.5f;
-        private const float GameOverZoomTime = 2;
+        private const float GameOverZoomTime = 1;
         
         [SerializeField] private GameManager gameManager;
         [SerializeField] private GameObject crane;
