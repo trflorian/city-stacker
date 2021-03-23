@@ -96,7 +96,7 @@ namespace Crane
             if (_isGameOver) return;
 
             OnScoreIncreased?.Invoke(_swingCount);
-            gameManager.score ++;
+            gameManager.IncreaseScore();
             
             _currentHouse.OnTouchDown -= MoveUp;
             

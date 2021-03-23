@@ -6,9 +6,9 @@ using UnityEngine;
 namespace UI
 {
     /// <summary>
-    /// Display score text
+    /// Display highscore text
     /// </summary>
-    public class ScoreUI : MonoBehaviour
+    public class HighScoreUI : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
         
@@ -21,7 +21,7 @@ namespace UI
 
         private void Update()
         {
-            _scoreText.SetText($"Score: {gameManager.Score}");
+            _scoreText.SetText($"High Score: {gameManager.Highscore}");
         }
     }
 }

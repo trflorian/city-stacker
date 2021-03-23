@@ -9,10 +9,15 @@ namespace Core
     /// </summary>
     public class GameManager : MonoBehaviour
     {
+        private const string HighscorePrefKey = "Highscore";
+
+        [SerializeField] private bool autoStartEnabled;
+        
         public event UnityAction OnTouchTap;
         public event UnityAction OnGameOver;
 
-        public int score;
+        public int Score { get; private set; }
+        public int Highscore { get; private set; }
         
         private bool _isGameOver;
     
@@ -20,16 +25,24 @@ namespace Core
 
         private void Awake()
         {
-            Reset();
+            Highscore = PlayerPrefs.GetInt(HighscorePrefKey, 0);
             
-            _controls = new TouchControls();
+            Reset();
 
+            _controls = new TouchControls();
             _controls.Core.Fire.started += OnTouchScreenTap;
-            _controls.Enable();
+
+            if (autoStartEnabled)
+            {
+                StartGame();
+            }
         }
 
         private void OnDestroy()
         {
+            PlayerPrefs.SetInt(HighscorePrefKey, Highscore);
+            PlayerPrefs.Save();
+
             _controls.Core.Fire.started -= OnTouchScreenTap;
             _controls.Disable();
         }
@@ -51,7 +64,7 @@ namespace Core
 
         public void Reset()
         {
-            score = 0;
+            Score = 0;
             _isGameOver = false;
 
             for (int i = transform.childCount-1; i >= 0; i--)
@@ -63,6 +76,21 @@ namespace Core
         public void Tap()
         {
             OnTouchTap?.Invoke();
+        }
+
+        public void IncreaseScore()
+        {
+            Score++;
+
+            if (Score > Highscore)
+            {
+                Highscore = Score;
+            }
+        }
+
+        public void StartGame()
+        {
+            _controls.Enable();
         }
     }
 }
