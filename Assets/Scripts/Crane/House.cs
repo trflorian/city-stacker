@@ -48,6 +48,11 @@ namespace Crane
             };
 
             spriteRenderer.sprite = sprite;
+
+            if (floorLevel > 0 && floorLevel < BuildingHeight)
+            {
+                spriteRenderer.flipY = floorLevel % 2 == 0;
+            }
         }
 
         public void Detach()
