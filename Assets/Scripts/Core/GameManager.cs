@@ -9,7 +9,7 @@ namespace Core
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-        private const string HighscorePrefKey = "Highscore";
+        private const string HighScorePrefKey = "Highscore";
 
         [SerializeField] private bool autoStartEnabled;
         
@@ -17,7 +17,7 @@ namespace Core
         public event UnityAction OnGameOver;
 
         public int Score { get; private set; }
-        public int Highscore { get; private set; }
+        public int HighScore { get; private set; }
         
         private bool _isGameOver;
     
@@ -25,7 +25,7 @@ namespace Core
 
         private void Awake()
         {
-            Highscore = PlayerPrefs.GetInt(HighscorePrefKey, 0);
+            HighScore = PlayerPrefs.GetInt(HighScorePrefKey, 0);
             
             Reset();
 
@@ -40,7 +40,7 @@ namespace Core
 
         private void OnDestroy()
         {
-            PlayerPrefs.SetInt(HighscorePrefKey, Highscore);
+            PlayerPrefs.SetInt(HighScorePrefKey, HighScore);
             PlayerPrefs.Save();
 
             _controls.Core.Fire.started -= OnTouchScreenTap;
@@ -82,9 +82,9 @@ namespace Core
         {
             Score++;
 
-            if (Score > Highscore)
+            if (Score > HighScore)
             {
-                Highscore = Score;
+                HighScore = Score;
             }
         }
 

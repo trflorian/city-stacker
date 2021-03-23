@@ -21,7 +21,7 @@ namespace UI
 
         private void Update()
         {
-            _scoreText.SetText($"High Score: {gameManager.Highscore}");
+            _scoreText.SetText($"High Score: {gameManager.HighScore}");
         }
     }
 }
