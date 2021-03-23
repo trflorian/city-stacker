@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 # Virtual environment
 venv/
+
+# Unity ML-Agents results 
+results/
