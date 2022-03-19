@@ -1,6 +1,7 @@
 using Crane;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Core
@@ -51,7 +52,10 @@ namespace Core
 
         private void OnTouchScreenTap(InputAction.CallbackContext ctx)
         {
-            OnTouchTap?.Invoke();
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                OnTouchTap?.Invoke();
+            }
         }
 
         public void CallGameOver()
