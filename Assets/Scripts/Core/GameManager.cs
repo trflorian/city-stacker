@@ -1,8 +1,10 @@
+using System;
 using Crane;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace Core
 {
@@ -33,7 +35,6 @@ namespace Core
             Reset();
 
             _controls = new TouchControls();
-            _controls.Core.Fire.started += OnTouchScreenTap;
 
             if (autoStartEnabled)
             {
@@ -41,21 +42,20 @@ namespace Core
             }
         }
 
+        private void Update()
+        {
+            if (_controls.Core.Fire.WasPressedThisFrame() && !EventSystem.current.IsPointerOverGameObject())
+            {
+                OnTouchTap?.Invoke();
+            } 
+        }
+
         private void OnDestroy()
         {
             PlayerPrefs.SetInt(HighScorePrefKey, HighScore);
             PlayerPrefs.Save();
 
-            _controls.Core.Fire.started -= OnTouchScreenTap;
             _controls.Disable();
-        }
-
-        private void OnTouchScreenTap(InputAction.CallbackContext ctx)
-        {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                OnTouchTap?.Invoke();
-            }
         }
 
         public void CallGameOver()
