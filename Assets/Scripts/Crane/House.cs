@@ -24,7 +24,10 @@ namespace Crane
         [SerializeField] private Sprite houseWindowsBase, houseWindowsBody, houseWindowsTop;
         [SerializeField] private Sprite houseDoor, houseRoof;
 
+        [SerializeField] private AudioClip clipLand;
+
         private Rigidbody2D _rigidbody;
+        private AudioSource _audioSource;
 
         private GameManager _gameManager;
 
@@ -38,6 +41,8 @@ namespace Crane
 
             _rigidbody = GetComponent<Rigidbody2D>();
             _rigidbody.gravityScale = GravityScale;
+
+            _audioSource = GetComponent<AudioSource>();
         }
 
         public void Setup(GameManager gameManager, int floorLevel, Vector2 initialVelocity)
@@ -91,6 +96,9 @@ namespace Crane
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            // play sound effect
+            _audioSource.PlayOneShot(clipLand);
+            
             var touchGround = other.transform.CompareTag("Ground");
             if (other.transform.CompareTag("House") || _level == 0  && touchGround)
             {
