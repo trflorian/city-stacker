@@ -40,7 +40,10 @@ func quit() -> void:
 		return
 	_is_quitting = true
 	quitting.emit()
-	await get_tree().create_timer(QUIT_DELAY).timeout
+	# wait in real time, the audio thread is not affected by time scale or fixed fps
+	var quit_time := Time.get_ticks_msec() + int(QUIT_DELAY * 1000.0)
+	while Time.get_ticks_msec() < quit_time:
+		await get_tree().process_frame
 	get_tree().quit()
 
 

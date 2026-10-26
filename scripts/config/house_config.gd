@@ -16,19 +16,10 @@ extends Resource
 @export var released_angular_damp := 0.01
 
 @export_group("Looks")
-## Drawn size in world units, slightly wider than the collider so the floors overlap visually.
-@export var size := Vector2(1.395, 1.025)
-## One color is picked at random for each building.
+## Resolution of the house sprites. Each sprite sheet holds the top, middle and ground floor from top to bottom.
+@export var sprite_pixels_per_unit := 200.0
+## Tint of the facade sprite, one color is picked at random for each building.
 @export var facade_colors: Array[Color] = []
-@export var window_color := Color(0.89, 0.89, 0.89)
-@export var door_color := Color(0.52, 0.34, 0.15)
-@export var roof_color := Color(0.87, 0.6, 0.25)
-## Height of the slightly darker floor slab at the bottom of each floor relative to the house height.
-@export var slab_height := 0.08
-## How much darker the floor slab is than the facade.
-@export var slab_darken := 0.08
-## Window size relative to the house size.
-@export var window_size := Vector2(0.2, 0.28)
 
 @export_group("Audio")
 ## Minimum time between two landing sounds of the same house in seconds.

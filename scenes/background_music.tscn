@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/audio/background_music.gd" id="1_music"]
+[ext_resource type="AudioStream" path="res://assets/audio/music.ogg" id="2_music"]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("2_music")
 volume_db = -10.5
+autoplay = true
 script = ExtResource("1_music")

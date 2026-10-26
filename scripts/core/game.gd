@@ -15,8 +15,6 @@ var _is_game_over := false
 
 
 func _ready() -> void:
-	_tap_player.stream = Synth.snap()
-
 	_crane.house_landed.connect(_on_house_landed)
 	_crane.house_fell.connect(_end_game)
 	_crane.building_completed.connect(_end_game)

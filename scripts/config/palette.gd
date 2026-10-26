@@ -14,6 +14,3 @@ extends Resource
 ## Flat drop shadow used for texts, buttons and icons.
 @export var shadow := Color(0.0, 0.12, 0.14, 0.25)
 @export var shadow_offset := Vector2(0, 5)
-
-@export_group("UI")
-@export var icon := Color.WHITE

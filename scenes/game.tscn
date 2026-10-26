@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scripts/core/game.gd" id="1_game"]
 [ext_resource type="Script" path="res://scripts/world/ground.gd" id="2_ground"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" path="res://resources/palette.tres" id="11_palette"]
 [ext_resource type="Script" path="res://scripts/world/sky_background.gd" id="12_sky_background"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="13_sky_shader"]
+[ext_resource type="AudioStream" path="res://assets/audio/snap.ogg" id="14_snap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(16435, 1652)
@@ -32,6 +33,7 @@ boundaries = [NodePath("GameCamera/LeftBoundary"), NodePath("GameCamera/RightBou
 
 [node name="TapPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+stream = ExtResource("14_snap")
 
 [node name="SkyBackground" type="CanvasLayer" parent="."]
 layer = -1

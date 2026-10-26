@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
 [ext_resource type="Script" path="res://scripts/ui/small_caps_label.gd" id="2_label"]
 [ext_resource type="Script" path="res://scripts/ui/mute_button.gd" id="3_mute"]
 [ext_resource type="FontFile" path="res://assets/fonts/sf_atarian_system.ttf" id="4_font"]
 [ext_resource type="Resource" path="res://resources/palette.tres" id="5_palette"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/sound_on.png" id="6_sound_on"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/sound_off.png" id="7_sound_off"]
 
 [sub_resource type="FontVariation" id="FontVariation_bold"]
 base_font = ExtResource("4_font")
@@ -89,6 +91,8 @@ focus_mode = 0
 flat = true
 script = ExtResource("3_mute")
 palette = ExtResource("5_palette")
+sound_on_texture = ExtResource("6_sound_on")
+sound_off_texture = ExtResource("7_sound_off")
 
 [node name="GameOverPanel" type="Control" parent="Root"]
 unique_name_in_owner = true

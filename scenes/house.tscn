@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/crane/house.gd" id="1_house"]
+[ext_resource type="AudioStream" path="res://assets/audio/blop.ogg" id="2_blop"]
+[ext_resource type="Texture2D" path="res://assets/sprites/house_facade.png" id="3_facade"]
+[ext_resource type="Texture2D" path="res://assets/sprites/house_windows.png" id="4_windows"]
+[ext_resource type="Texture2D" path="res://assets/sprites/house_details.png" id="5_details"]
 
 [node name="House" type="RigidBody2D"]
 contact_monitor = true
@@ -9,4 +13,14 @@ script = ExtResource("1_house")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+[node name="Facade" type="Sprite2D" parent="."]
+texture = ExtResource("3_facade")
+
+[node name="Windows" type="Sprite2D" parent="."]
+texture = ExtResource("4_windows")
+
+[node name="Details" type="Sprite2D" parent="."]
+texture = ExtResource("5_details")
+
 [node name="LandPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_blop")
