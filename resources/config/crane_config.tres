@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CraneConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/config/crane_config.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+rope_length = 6.0
+max_swing_angle = 10.0
+start_height = 7.0
+floor_height = 1.0
+rope_width = 0.08

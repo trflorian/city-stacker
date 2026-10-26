@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="Script" path="res://scripts/ui/small_caps_label.gd" id="2_label"]
+[ext_resource type="Script" path="res://scripts/ui/mute_button.gd" id="3_mute"]
+[ext_resource type="FontFile" path="res://assets/fonts/sf_atarian_system.ttf" id="4_font"]
+[ext_resource type="Resource" path="res://resources/palette.tres" id="5_palette"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/sound_on.png" id="6_sound_on"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/sound_off.png" id="7_sound_off"]
+
+[sub_resource type="FontVariation" id="FontVariation_bold"]
+base_font = ExtResource("4_font")
+variation_embolden = 0.6
+
+[sub_resource type="FontVariation" id="FontVariation_italic"]
+base_font = ExtResource("4_font")
+variation_transform = Transform2D(1, 0, 0.2, 1, 0, 0)
+
+[node name="Hud" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 60.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_bold")
+script = ExtResource("2_label")
+label_text = "City Stacker"
+label_font_size = 140
+
+[node name="Instructions" type="RichTextLabel" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_italic")
+script = ExtResource("2_label")
+label_text = "Tap to start playing"
+label_font_size = 70
+
+[node name="Scores" type="VBoxContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = -6
+
+[node name="Score" type="RichTextLabel" parent="Root/Scores"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_label")
+label_text = "Score: 0"
+
+[node name="HighScore" type="RichTextLabel" parent="Root/Scores"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_label")
+label_text = "High Score: 0"
+
+[node name="MuteButton" type="Button" parent="Root"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = -24.0
+grow_vertical = 0
+focus_mode = 0
+flat = true
+script = ExtResource("3_mute")
+palette = ExtResource("5_palette")
+sound_on_texture = ExtResource("6_sound_on")
+sound_off_texture = ExtResource("7_sound_off")
+
+[node name="GameOverPanel" type="Control" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RestartButton" type="Button" parent="Root/GameOverPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -300.0
+offset_right = 213.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "Restart"
