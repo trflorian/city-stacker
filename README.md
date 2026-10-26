@@ -4,7 +4,7 @@ Mobile arcade game where you build your city by stacking the houses yourself.
 
 > **This branch is archived.** It contains the original Unity version of City Stacker and is no longer developed.
 > The game has been ported to [Godot](https://godotengine.org) and active development continues on the
-> [`master`](https://github.com/trflorian/city-stacker/tree/master) branch.
+> [`main`](https://github.com/trflorian/city-stacker/tree/main) branch.
 
 Play this version on [itch.io](https://flipflogames.itch.io/city-stacker).
 
