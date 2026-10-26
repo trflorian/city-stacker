@@ -23,6 +23,10 @@ extends Resource
 @export var window_color := Color(0.89, 0.89, 0.89)
 @export var door_color := Color(0.52, 0.34, 0.15)
 @export var roof_color := Color(0.87, 0.6, 0.25)
+## Height of the slightly darker floor slab at the bottom of each floor relative to the house height.
+@export var slab_height := 0.08
+## How much darker the floor slab is than the facade.
+@export var slab_darken := 0.08
 ## Window size relative to the house size.
 @export var window_size := Vector2(0.2, 0.28)
 

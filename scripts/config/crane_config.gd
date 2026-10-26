@@ -13,4 +13,3 @@ extends Resource
 
 @export_group("Rope")
 @export var rope_width := 0.08
-@export var rope_color := Color(0.85, 0.85, 0.85)

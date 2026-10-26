@@ -10,6 +10,7 @@ const HOUSE_SCENE: PackedScene = preload("res://scenes/house.tscn")
 
 @export var config: CraneConfig
 @export var house_config: HouseConfig
+@export var palette: Palette
 ## Parent of the spawned houses, they must not move together with the crane.
 @export var house_container: Node2D
 
@@ -25,7 +26,7 @@ var _joint: PinJoint2D
 
 func _ready() -> void:
 	_rope.width = Units.to_pixels(config.rope_width)
-	_rope.default_color = config.rope_color
+	_rope.default_color = palette.rope
 	_rope.visible = false
 
 

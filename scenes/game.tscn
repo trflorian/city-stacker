@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://scripts/core/game.gd" id="1_game"]
 [ext_resource type="Script" path="res://scripts/world/ground.gd" id="2_ground"]
@@ -10,12 +10,18 @@
 [ext_resource type="Script" path="res://scripts/world/boundary_area.gd" id="8_boundary"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="9_vignette"]
 [ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="10_hud"]
+[ext_resource type="Resource" path="res://resources/palette.tres" id="11_palette"]
+[ext_resource type="Script" path="res://scripts/world/sky_background.gd" id="12_sky_background"]
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="13_sky_shader"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(16435, 1652)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boundary"]
 size = Vector2(128, 3840)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sky"]
+shader = ExtResource("13_sky_shader")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vignette"]
 shader = ExtResource("9_vignette")
@@ -27,9 +33,24 @@ boundaries = [NodePath("GameCamera/LeftBoundary"), NodePath("GameCamera/RightBou
 [node name="TapPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
+[node name="SkyBackground" type="CanvasLayer" parent="."]
+layer = -1
+script = ExtResource("12_sky_background")
+palette = ExtResource("11_palette")
+
+[node name="ColorRect" type="ColorRect" parent="SkyBackground"]
+material = SubResource("ShaderMaterial_sky")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 1060)
 script = ExtResource("2_ground")
+palette = ExtResource("11_palette")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -41,6 +62,7 @@ unique_name_in_owner = true
 script = ExtResource("3_crane")
 config = ExtResource("4_crane_config")
 house_config = ExtResource("5_house_config")
+palette = ExtResource("11_palette")
 house_container = NodePath("../Houses")
 
 [node name="Pivot" type="StaticBody2D" parent="Crane"]

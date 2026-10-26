@@ -2,9 +2,7 @@ class_name MuteButton
 extends Button
 ## Toggles all game audio. Draws a speaker icon with sound waves, or a cross when muted.
 
-@export var icon_color := Color.WHITE
-@export var shadow_color := Color(0, 0, 0, 0.2)
-@export var shadow_offset := Vector2(0, 3)
+@export var palette: Palette
 
 
 func _ready() -> void:
@@ -17,8 +15,8 @@ func _on_mute_changed(_muted: bool) -> void:
 
 
 func _draw() -> void:
-	_draw_icon(shadow_offset, shadow_color)
-	_draw_icon(Vector2.ZERO, icon_color)
+	_draw_icon(palette.shadow_offset, palette.shadow)
+	_draw_icon(Vector2.ZERO, palette.icon)
 
 
 func _draw_icon(offset: Vector2, color: Color) -> void:

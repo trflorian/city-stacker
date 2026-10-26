@@ -91,6 +91,9 @@ func _draw() -> void:
 		return
 
 	_draw_shape(_rect_points(Rect2(-half, size)), _facade_color)
+	var slab_height := size.y * _config.slab_height
+	var slab := Rect2(-half.x, half.y - slab_height, size.x, slab_height)
+	_draw_shape(_rect_points(slab), _facade_color.darkened(_config.slab_darken))
 
 	# flip every other floor vertically so the windows don't line up perfectly
 	if level > 0 and level % 2 == 0:
