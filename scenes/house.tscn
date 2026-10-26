@@ -1,22 +1,12 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/house.gd" id="1_house"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_friction"]
-friction = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_house"]
-size = Vector2(174.35, 128.03)
+[ext_resource type="Script" path="res://scripts/crane/house.gd" id="1_house"]
 
 [node name="House" type="RigidBody2D"]
-mass = 20.0
-physics_material_override = SubResource("PhysicsMaterial_friction")
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_house")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.16, 0.38)
-shape = SubResource("RectangleShape2D_house")
 
 [node name="LandPlayer" type="AudioStreamPlayer" parent="."]

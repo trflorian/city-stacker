@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="HouseConfig" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/config/house_config.gd" id="1_script"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_house"]
+friction = 1.0
+
+[resource]
+script = ExtResource("1_script")
+building_height = 20
+collider_size = Vector2(1.362, 1)
+mass = 20.0
+gravity_scale = 1.8
+physics_material = SubResource("PhysicsMaterial_house")
+released_linear_damp = 1.0
+released_angular_damp = 0.01
+size = Vector2(1.395, 1.025)
+facade_colors = Array[Color]([Color(0.96, 0.87, 0.5, 1), Color(0.96, 0.55, 0.5, 1), Color(0.35, 0.7, 0.4, 1), Color(0.74, 0.56, 0.92, 1), Color(0.37, 0.62, 0.81, 1)])
+window_color = Color(0.89, 0.89, 0.89, 1)
+door_color = Color(0.52, 0.34, 0.15, 1)
+roof_color = Color(0.87, 0.6, 0.25, 1)
+window_size = Vector2(0.2, 0.28)
+land_sound_cooldown = 0.1

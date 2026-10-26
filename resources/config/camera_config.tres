@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CameraConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/config/camera_config.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+follow_offset = 7.5
+follow_speed = 3.0
+view_half_height = 5.0
+overview_zoom_time = 1.0

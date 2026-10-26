@@ -12,15 +12,17 @@ config_version=5
 
 config/name="City Stacker"
 config/description="Mobile arcade game where you build your city by stacking the houses yourself"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.56, 0.72, 0.72, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+config/quit_on_go_back=false
 
 [autoload]
 
-Global="*res://scripts/global.gd"
+GameState="*res://scripts/core/game_state.gd"
+Music="*res://scenes/background_music.tscn"
 
 [display]
 
@@ -32,9 +34,17 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_cast=2
+gdscript/warnings/unsafe_call_argument=2
+
 [gui]
 
-theme/custom="res://scenes/theme.tres"
+theme/custom="res://resources/theme.tres"
 
 [input_devices]
 
@@ -50,4 +60,3 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.56, 0.72, 0.72, 1)
-anti_aliasing/quality/msaa_2d=2
