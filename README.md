@@ -56,6 +56,17 @@ gdformat --line-length 120 .
 gdlint .
 ```
 
+`scenes/test/stack_test.tscn` starts with a stack of houses already in place, stacked almost perfectly with seeded
+random offsets, to check how stable tall buildings are. Open it and press <kbd>F6</kbd> to watch, or run it headless
+and read the printed result (exit code 1 if the stack moved):
+
+```sh
+godot --headless res://scenes/test/stack_test.tscn -- --houses=10 --seed=3 --duration=10
+```
+
+Other options are `--offset` and `--rotation` for the random placement and `--ticks` and `--iterations` to try
+different physics settings.
+
 All assets are stored directly in git, Git LFS is not used. The whole `assets/` folder is about 400 KB, the music is
 an Ogg Vorbis file.
 
